@@ -1,0 +1,41 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../data/data-service.html">
+<link rel="import" href="student-card.html">
+
+<polymer-element name="student-list" attributes="show">
+  <template>
+    <style>
+    :host {
+      display: block;
+      width: 100%;
+    }
+    student-card {
+      margin-bottom: 30px;
+    }
+    </style>
+
+    <data-service id="service" students="{{students}}"></data-service>
+
+    <div layout vertical center>
+      <template repeat="{{student in students}}">
+        <student-card
+          showedUp="{{student.showedUp}}"
+          on-showedUp-tap="{{handleshowedUp}}"
+          hidden?="{{show == 'showedUps' && !student.showedUp}}">
+          <img src="{{student.avatar}}" width="70" height="70">
+          <h2>{{student.username}}</h2>
+          <p>{{student.excuse}}</p>
+        </student-card>
+      </template>
+    </div>
+  </template>
+
+  <script>
+  Polymer({
+    handleshowedUp: function(event, detail, sender) {
+      var student = sender.templateInstance.model.student;
+      this.$.service.setshowedUp(student.uid, student.showedUp);
+    }
+  });
+  </script>
+</polymer-element>
