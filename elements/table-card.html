@@ -1,71 +1,66 @@
-<link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/hero-transition.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/cross-fade.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/slide-down.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/slide-up.html">
+<link rel="import" href="../bower_components/core-animated-pages/transitions/tile-cascade.html">
 
-<polymer-element name="table-card">
+<polymer-element name="nested-demo">
+
   <template>
     <style>
-    :host {
-      display: block;
-      position: relative;
-      background-color: white;
-      padding: 20px;
-      width: 100%;
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
-    .card-header {
-      margin-bottom: 10px;
-    }
-    polyfill-next-selector { content: '.card-header h2'; }
-    .card-header ::content h2 {
-      margin: 0;
-      font-size: 1.8rem;
-      font-weight: 300;
-    }
-    polyfill-next-selector { content: '.card-header img'; }
-    .card-header ::content img {
-      width: 70px;
-      border-radius: 50%;
-      margin: 10px;
-    }
-    core-icon-button {
-      position: absolute;
-      top: 3px;
-      right: 3px;
-      color: #636363;
-    }
-    :host([tableSet]) core-icon-button {
-      color: #da4336;
-    }
-    </style>
-
-    <div class="card-header" layout horizontal center>
-
-      <content select="img"></content>
-      <content select="h2"></content>
-
-    </div>
-
-    <core-icon-button
-      id="favicon"
-      icon="check"
-      on-tap="{{tableSetTapped}}">
-    </core-icon-button>
-
-    <content></content>
-  </template>
-  <script>
-  Polymer({
-    publish: {
-      tableSet: {
-        value: false,
-        reflect: true
+      core-animated-pages {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
+        right: 0px;
       }
-    },
-    tableSetTapped: function(event, detail, sender) {
-      this.tableSet = !this.tableSet;
-      this.fire('tableSet-tap');
-    }
-  });
+      section {
+        text-align: center;
+        padding-top: 250px;
+      }
+      .square {
+        display: inline-block;
+        margin: 8px;
+        padding: 8px;
+        width: 200px;
+        height: 200px;
+        color: rgb(255, 255, 255);
+        background-color: orange;
+      }
+    </style>
+    <core-animated-pages transitions="hero-transition cross-fade" selected="{{ page }}" selectedindex="0" notap id="core_animated_pages">
+      <section id="section" on-tap="{{ transition }}" layout horizontal center-justified active>
+        <div id="thing1" class="square" hero-id="thing" hero>thing 1</div>
+        <div id="thing2" class="square" hero-id="thing" cross-fade>thing 2</div>
+      </section>
+      <nested-animated-pages id="nested_animated_pages" page="0" on-nested-back="{{ back }}"></nested-animated-pages>
+    </core-animated-pages>
+  </template>
+
+  <script>
+
+    Polymer({
+      page: 0,
+      subpage: 0,
+      transition: function (e) {
+        var el = e.target;
+        if (el.id === "thing1") {
+          this.subpage = 0;
+        } else {
+          this.subpage = 1;
+        }
+        setTimeout(function() {
+          this.page = 1;
+        }.bind(this), 200);
+      },
+      back: function () {
+        this.page = 0;
+      }
+    });
+
   </script>
+
 </polymer-element>

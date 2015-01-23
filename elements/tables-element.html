@@ -16,7 +16,7 @@
 
     <data-service id="service" tables="{{tables}}"></data-service>
 
-    <div layout vertical center>
+    <horizontal layout wrap style="60%">
       <template repeat="{{table in tables}}">
         <table-card
           tableSet="{{table.tableSet}}"

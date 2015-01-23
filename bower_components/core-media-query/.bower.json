@@ -13,6 +13,6 @@
     "commit": "edf2990b66cdcc082e8d4bbebd8321cb4079c634"
   },
   "_source": "git://github.com/Polymer/core-media-query.git",
-  "_target": "^0.5",
+  "_target": "~0.5.3",
   "_originalSource": "Polymer/core-media-query"
 }

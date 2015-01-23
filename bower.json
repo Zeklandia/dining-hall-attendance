@@ -10,6 +10,8 @@
     "paper-elements": "Polymer/paper-elements#~0.5.3",
     "platform": "Polymer/platform#~0.4.2",
     "core-elements": "Polymer/core-elements#~0.5.3",
-    "core-ajax": "Polymer/core-ajax#~0.5.3"
+    "core-ajax": "Polymer/core-ajax#~0.5.3",
+    "core-media-query": "Polymer/core-media-query#~0.5.3",
+    "core-meta": "Polymer/core-meta#~0.5.3"
   }
 }
