@@ -1,0 +1,74 @@
+[
+  {
+    "uid": 1,
+    "username" : "Eric Peter",
+    "avatar" : "../images/avatar-01.svg",
+    "table" : 5,
+    "excused": false,
+    "excuse" : "",
+    "showedUp": false
+  },
+  {
+    "uid": 2,
+    "username" : "Rob Edward",
+    "avatar" : "../images/avatar-02.svg",
+    "table" : 3,
+    "excused": false,
+    "excuse" : "",
+    "showedUp": false
+  },
+    {
+    "uid": 3,
+    "username" : "Dimitri van den Berg",
+    "avatar" : "../images/avatar-03.svg",
+    "table" : 2,
+    "excused": false,
+    "excuse" : "",
+    "showedUp": false
+  },
+  {
+    "uid": 4,
+    "username" : "Ada Joyce",
+    "avatar" : "../images/avatar-07.svg",
+    "table" : 7,
+    "excused": true,
+    "excuse" : "Sportsball game",
+    "showedUp": false
+  },
+  {
+    "uid": 5,
+    "username" : "Grace Edward",
+    "avatar" : "../images/avatar-08.svg",
+    "table" : null,
+    "excused": false,
+    "excuse" : "",
+    "showedUp": false
+  },
+  {
+    "uid": 6,
+    "username" : "John Stewart",
+    "avatar" : "../images/avatar-04.svg",
+    "table" : 1,
+    "excused": true,
+    "excuse" : "Advisee dinner",
+    "showedUp": false
+  },
+  {
+    "uid": 7,
+    "username" : "Sara Ingram",
+    "avatar" : "../images/avatar-06.svg",
+    "table" : 4,
+    "excused": false,
+    "excuse" : "",
+    "showedUp": false
+  },
+  {
+    "uid": 8,
+    "username" : "Norbert Dinkelhoff",
+    "avatar" : "../images/avatar-05.svg",
+    "table" : 6,
+    "excused": false,
+    "excuse" : "",
+    "showedUp": false
+  }
+]

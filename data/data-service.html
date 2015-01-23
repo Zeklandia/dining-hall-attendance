@@ -1,0 +1,83 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+<!-- 
+  `<data-service>` provides data on students.
+
+  @element data-service
+-->
+
+<!--
+  An array of student objects, with the following format:
+
+  <table border="0">
+    <tr>
+      <td><code>uid</code></td>
+      <td>Number</td>
+      <td>Unique ID for this student.</td>
+    </tr>
+     <tr>
+      <td><code>username</code></td>
+      <td>String</td>
+      <td>studenter's username.</td>
+    </tr>
+    <tr>
+      <td><code>avatar</code></td>
+      <td>String</td>
+      <td>URL for the user's avatar.</td>
+    </tr>  
+    <tr>
+      <td><code>text</code></td>
+      <td>String</td>
+      <td>student text.</td>
+    </tr>  
+    <tr>
+      <td><code>showedUp</code></td>
+      <td>Boolean</td>
+      <td>True if the current user showedUpd this student.</td>
+    </tr>
+  </table>
+  
+  @attribute students 
+  @type Array
+  @default []
+-->
+<polymer-element name="data-service" attributes="students">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+      auto
+      url="../api/students.json"
+      on-core-response="{{studentsLoaded}}"
+      handleAs="json">
+    </core-ajax>
+  </template>
+  <script>
+  Polymer('data-service', {
+    created: function() {
+      this.students = [];
+    },
+    studentsLoaded: function() {
+      // Make a copy of the loaded data
+      this.students = this.$.ajax.response.slice(0);
+    },
+    /** 
+     * Update the service with the current showedUp value.
+     * (Two-way data binding updates the showedUp value 
+     * stored locally.) If this was a real service, this
+     * method would do something useful.
+     * 
+     * @method setshowedUp
+     * @param uid {Number} Unique ID for student.
+     * @param isshowedUp {Boolean} True if the user marked this student as a showedUp.
+     */
+    setshowedUp: function(uid, isshowedUp) {
+      // no service backend, just log the change
+      console.log('showedUp changed: ' + uid + ", now: " + isshowedUp);
+    }
+  });
+  </script>
+</polymer-element>

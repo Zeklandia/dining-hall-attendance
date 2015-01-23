@@ -1,0 +1,12 @@
+[
+  {
+    "uid": 1,
+    "faculty": ["Dr. van der Bilt","Mrs. Jennings"],
+    "seats": 8
+  },
+    {
+    "uid": 2,
+    "faculty": ["Sir Dr. Professor, P.h.D., Sr.","Ed"],
+    "seats": 8
+  }
+]
