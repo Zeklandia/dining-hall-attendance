@@ -1,24 +1,24 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/core-ajax/core-ajax.html">
 <!--
-  `<data-service>` provides data on students.
+  `<data-service>` provides data on tables.
 
   @element data-service
 -->
 
 <!--
-  An array of student objects, with the following format:
+  An array of table objects, with the following format:
 
   <table border="0">
     <tr>
       <td><code>uid</code></td>
       <td>Number</td>
-      <td>Unique ID for this student.</td>
+      <td>Unique ID for this table.</td>
     </tr>
      <tr>
       <td><code>username</code></td>
       <td>String</td>
-      <td>studenter's username.</td>
+      <td>tableer's username.</td>
     </tr>
     <tr>
       <td><code>avatar</code></td>
@@ -28,20 +28,20 @@
     <tr>
       <td><code>text</code></td>
       <td>String</td>
-      <td>student text.</td>
+      <td>table text.</td>
     </tr>
     <tr>
-      <td><code>showedUp</code></td>
+      <td><code>tableSet</code></td>
       <td>Boolean</td>
-      <td>True if the current user showedUpd this student.</td>
+      <td>True if the current user tableSetd this table.</td>
     </tr>
   </table>
 
-  @attribute students
+  @attribute tables
   @type Array
   @default []
 -->
-<polymer-element name="data-service" attributes="students">
+<polymer-element name="data-service" attributes="tables">
   <template>
     <style>
     :host {
@@ -50,33 +50,33 @@
     </style>
     <core-ajax id="ajax"
       auto
-      url="../api/students.json"
-      on-core-response="{{studentsLoaded}}"
+      url="../api/tables.json"
+      on-core-response="{{tablesLoaded}}"
       handleAs="json">
     </core-ajax>
   </template>
   <script>
   Polymer('data-service', {
     created: function() {
-      this.students = [];
+      this.tables = [];
     },
-    studentsLoaded: function() {
+    tablesLoaded: function() {
       // Make a copy of the loaded data
-      this.students = this.$.ajax.response.slice(0);
+      this.tables = this.$.ajax.response.slice(0);
     },
     /**
-     * Update the service with the current showedUp value.
-     * (Two-way data binding updates the showedUp value
+     * Update the service with the current tableSet value.
+     * (Two-way data binding updates the tableSet value
      * stored locally.) If this was a real service, this
      * method would do something useful.
      *
-     * @method setshowedUp
-     * @param uid {Number} Unique ID for student.
-     * @param isshowedUp {Boolean} True if the user marked this student as a showedUp.
+     * @method settableSet
+     * @param uid {Number} Unique ID for table.
+     * @param istableSet {Boolean} True if the user marked this table as a tableSet.
      */
-    setshowedUp: function(uid, isshowedUp) {
+    settableSet: function(uid, istableSet) {
       // no service backend, just log the change
-      console.log('showedUp changed: ' + uid + ", now: " + isshowedUp);
+      console.log('tableSet changed: ' + uid + ", now: " + istableSet);
     }
   });
   </script>

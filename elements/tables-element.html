@@ -1,6 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../data/data-service.html">
-<link rel="import" href="student-card.html">
+<link rel="import" href="table-card.html">
 
 <polymer-element name="tables-element" attributes="show">
   <template>
@@ -9,32 +9,32 @@
       display: block;
       width: 100%;
     }
-    student-card {
+    table-card {
       margin-bottom: 30px;
     }
     </style>
 
-    <data-service id="service" students="{{students}}"></data-service>
+    <data-service id="service" tables="{{tables}}"></data-service>
 
     <div layout vertical center>
-      <template repeat="{{student in students}}">
-        <student-card
-          showedUp="{{student.showedUp}}"
-          on-showedUp-tap="{{handleshowedUp}}"
-          hidden?="{{show == 'showedUps' && !student.showedUp}}">
-          <img src="{{student.avatar}}" width="70" height="70">
-          <h2>{{student.username}}</h2>
-          <p>{{student.excuse}}</p>
-        </student-card>
+      <template repeat="{{table in tables}}">
+        <table-card
+          tableSet="{{table.tableSet}}"
+          on-tableSet-tap="{{handletableSet}}"
+          hidden?="{{show == 'tableSets' && !table.tableSet}}">
+          <img src="{{table.avatar}}" width="70" height="70">
+          <h2>{{table.username}}</h2>
+          <p>{{table.excuse}}</p>
+        </table-card>
       </template>
     </div>
   </template>
 
   <script>
   Polymer({
-    handleshowedUp: function(event, detail, sender) {
-      var student = sender.templateInstance.model.student;
-      this.$.service.setshowedUp(student.uid, student.showedUp);
+    handletableSet: function(event, detail, sender) {
+      var table = sender.templateInstance.model.table;
+      this.$.service.settableSet(table.uid, table.tableSet);
     }
   });
   </script>
